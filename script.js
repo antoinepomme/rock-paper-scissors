@@ -29,9 +29,9 @@ function playRound() {
         } else {
             playerSelection = 0;
         }
-        console.log("You chosed " + arr[playerSelection - 1] + 
-        ", Computer chosed " + arr[computerSelection - 1] + ".");
     }
+    console.log("You chosed " + arr[playerSelection - 1] + 
+    ", Computer chosed " + arr[computerSelection - 1] + ".");
     if (playerSelection == computerSelection) {
         return 3;
     } else if (playerSelection == 1 && computerSelection == 3
@@ -44,12 +44,31 @@ function playRound() {
 }
 
 function game() {
-    result = playRound(0, getComputerChoice());
-    if (result == 1) {
-        console.log("Win !");
-    } else if (result == 2) {
-        console.log("Lose ...");
+    p = 0;
+    c = 0;
+    for (let i = 0; i < 5; i++) {
+        result = playRound(0, getComputerChoice());
+        if (result == 1) {
+            console.log("Win !");
+            p++;
+        } else if (result == 2) {
+            console.log("Lose ...");
+            c++;
+        } else {
+            console.log("Tie");
+        }
+    }
+    if (p > c) {
+        console.log("Your score : " + p.toString() +
+        "\nComputer's score : " + c.toString() +
+        "\nYou win !");
+    } else if (c > p) {
+        console.log("Your score : " + p.toString() +
+        "\nComputer's score : " + c.toString() +
+        "\nYou lose ...");
     } else {
-        console.log("Tie");
+        console.log("Your score : " + p.toString() +
+        "\nComputer's score : " + c.toString() +
+        "\nIt's a tie");
     }
 }
